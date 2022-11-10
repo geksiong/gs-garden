@@ -5,7 +5,7 @@ date: 2018-11-01
 
 tags:
   - jenkins
-  - tech notes
+  - devops
 
 ---
 # Basic Declarative Pipeline
