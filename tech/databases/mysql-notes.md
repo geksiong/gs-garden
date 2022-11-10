@@ -5,7 +5,7 @@ updated: 2021-08-12
 
 tags:
   - mysql
-  - tech notes
+  - tech
 
 ---
 # MySQL Notes & Tips
