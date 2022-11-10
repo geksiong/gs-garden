@@ -8,11 +8,11 @@ tags:
 - chords
 ---
 
-## Chord Progressions
+# Chord Progressions
 
-### 4 chord songs
+## 4 chord songs
 
-#### The "Plagal Cascade"
+### The "Plagal Cascade"
 
 ```
 | i   | bIII | bVII | IV  |
@@ -26,7 +26,7 @@ The 2nd, 3rd and 4th chords descends by perfect 4ths (*plagal cadence*)
 - Wonderwall (Oasis)
 - Radioactive (Imagine Dragons)
 
-#### "Can't Stop" Progression
+### "Can't Stop" Progression
 
 ```
 | i   | bVII | v   | bVI |
@@ -38,7 +38,7 @@ The 2nd, 3rd and 4th chords descends by perfect 4ths (*plagal cadence*)
 - Can't Stop (Red Hot Chilli Peppers)
 - Hello (Adele)
 
-#### "Closing Time" Progression
+### "Closing Time" Progression
 
 ```
 | I   | V   | ii  | IV  |
@@ -52,7 +52,7 @@ The `ii` and `IV` chords have sub-dominant function.
 - Closing Time (Semisonic)
 - Believe (Cher)
 
-#### "Axis of Awesome" Progression
+### "Axis of Awesome" Progression
 
 ```
 | I   | V   | vi  | IV  |
@@ -71,7 +71,7 @@ The `ii` and `IV` chords have sub-dominant function.
 
 You can basically start the "Axis" sequence on any chord.
 
-##### Starting on vi
+#### Starting on vi
 
 ```
 | vi  | IV  | I   | V   |
@@ -85,7 +85,7 @@ You can basically start the "Axis" sequence on any chord.
 - Grenade
 - San Francisco
 
-##### Starting on IV
+#### Starting on IV
 
 ```
 | IV  | I   | V   | vi  |
@@ -96,7 +96,7 @@ You can basically start the "Axis" sequence on any chord.
 - Umbrella (Rihanna)
 - Dragostea Din Tei. aka the "Numa Numa" song
 
-#### "Mr Brightside" Progression
+### "Mr Brightside" Progression
 
 ```
 | I   | IV  | iii | V   |
@@ -109,7 +109,7 @@ You can basically start the "Axis" sequence on any chord.
 - She Drives Me Crazy
 - That Makes Me Beautiful (One Direction)
 
-#### Harmonic Minor Vamp
+### Harmonic Minor Vamp
 
 ```
 | i   | i   | bVI  | V   |
@@ -121,7 +121,7 @@ You can basically start the "Axis" sequence on any chord.
 - Havana
 - Sweet Dreams
 
-### 12-Bar Blues
+## 12-Bar Blues
 
 ```
 | I   | I   | I   | I   |
