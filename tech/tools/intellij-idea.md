@@ -6,9 +6,9 @@ tags:
 - intellij
 ---
 
-## IntelliJ IDEA
+# IntelliJ IDEA
 
-### Plugins to install
+## Plugins to install
 
 - Rainbow Brackets
 - Indent Rainbows
