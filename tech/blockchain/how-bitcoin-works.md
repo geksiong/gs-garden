@@ -7,9 +7,9 @@ tags:
 - bitcoin
 ---
 
-## Bitcoin
+# How Bitcoin Works
 
-### Coins
+## Coins
 
 * A coin is not an integer, it is often a fraction, because they are tied to real-world monetary value.
 * But it cannot be a completely real number (since computers are discrete).
@@ -17,7 +17,7 @@ tags:
 
 Does this affect the real-world value of a bitcoin?
 
-### Transactions
+## Transactions
 
 * A bitcoin transaction consists of:
   * an input - a pointer to a previous transaction (hence "chain"), signed by the sender. The signature is based on elliptic curve cryptography (which is a public/private key crypto approach)
@@ -29,19 +29,19 @@ It can be seen that unless there are transactions to consolidate the bitcoins in
 
 The transaction may consist of an amount sent to the recipient, and the "change" going back to the sender.
 
-### Users
+## Users
 
 * Users are identified by their addresses which are related to their public keys.
 * Loss of the public keys means the user cannot access those bitcoins (frozen assets?)
 * Addresses are encoded in Base58Check which minimises risk of mistypes.
 
-### Mining
+## Mining
 
 Mining is how new coins are injected into the system (economy?)
 
 *How to prevent inflation over time?*
 
-### Double-Spend Problem
+## Double-Spend Problem
 
 * How to ensure that each coin is spent only once?
   * The traditional solution is to have a central authority that ensures this e.g. MasterCard, PayPal
@@ -72,7 +72,7 @@ Can there be multiple winners to each iteration?
 * As long as majority of miners are honest, the blockchain's integrity is safe.
 * The only way then for a rogue miner to control the network is to control a majority of the miner nodes (i.e. more dishonest nodes than honest ones - this may become a reality in future as costs become too prohibitive for miners to continue?).
 
-### Controlling the injection of new bitcoins
+## Controlling the injection of new bitcoins
 
 * Network will automatically lower max block hash value, to maintain steady rate of 6 blocks per hour (or about 1 block every 10 min), regardless of how much computing power the network has
 * So the rate of growth of the bitcoin economy is actually predictable.
@@ -89,18 +89,18 @@ Mathematically, is it guaranteed that lowering the max block hash value makes it
 * eventually, the reward will be insignificant and only transactions fees can support the miners
 * But transaction fees do not grow the economy - it's just existing money circulating around
 
-### Transaction processing rate
+## Transaction processing rate
 
 * Since the block size is ~1 Mb and the size of a transation is about 500 bytes, each block can hold only about 2k transactions
 * At 1 block every 10 min, this works out to only 2k txns / 600 secs, or about 3.33 txns/sec.
 
-### Cost of maintaining the bitcoin network
+## Cost of maintaining the bitcoin network
 
 * As mentioned above, the bitcoin network throttles the rate of blocks (and hence new bitcoins) injected into the network - when more miners participate in the mining, the network will make the winning criteria harder, and vice-versa. However, due to the rewards, the miners will try (as long as the price of bitcoin is high enough to justify the costs)
 * This means a lot of computing power is wasted in what basically amounts to a game of dice rolling.
 * However, the sheer collective computing power of the miners is a safeguard against the 51 percent attack.
 
-### "Improving" bitcoin
+## "Improving" bitcoin
 
 * To increase the transaction processing rate, a "obvious" solution is to simply increase the block size.
   * However, larger block sizes means more storage needed for bitcoin nodes to operate
@@ -114,12 +114,12 @@ Mathematically, is it guaranteed that lowering the max block hash value makes it
   * Basic idea is to have faster moving network on top the slower moving (legacy?) bitcoin network.
   * The bitcoin network thus becomes more of a "settlement layer"
 
-### Bitcoin Exchanges
+## Bitcoin Exchanges
 
 They actually have a purpose (beyond providing a place for people to speculate prices)
 
 More to come...
 
-### References
+## References
 
 * https://arstechnica.com/tech-policy/2017/12/how-bitcoin-works/
