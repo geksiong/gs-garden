@@ -6,7 +6,7 @@ tags:
 - java
 ---
 
-## Optionals
+# Optionals in Java
 
 `null` check is a code smell.
 
@@ -22,6 +22,7 @@ What if we are returning a single value? In the past, we return null. Now, we sh
 - Do not use `Optional<T>` as a parameter to methods. If needed, use overloading instead.
 - There is little reason to use `Optional` as a field.
 
-#### *Sources*
+---
+**Sources**
 
 1. Design Patterns Revisited in Modern Java by Venkat Subramaniam
