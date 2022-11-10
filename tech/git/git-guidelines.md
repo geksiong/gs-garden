@@ -6,17 +6,17 @@ tags:
 - git
 ---
 
-## Git Guidelines
+# Git Guidelines
 
 
-### Branches
+## Branches
 
 - `main` branch is the primary development branch
 - `prod` branch is the production release branch
 
 *more to come...*
 
-### Commits
+## Commits
 
 - Adopt [Conventional Commits](https://www.conventionalcommits.org) for commit message syntax
 - Commit messages should be prefixed with one of the following:
@@ -31,6 +31,6 @@ tags:
 - Indicate if the commit is still a work in progress
 - Do provide more details in the commit body, if it helps to clarify.
 
-#### Examples
+### Examples
 
 `feat: [PROJX-100][WIP] implement search function`
