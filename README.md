@@ -36,12 +36,16 @@ In 2003, Martin Fowler wrote:
 
 > A Zettelkasten is a personal tool for thinking and writing. It has hypertextual features to make a web of thought possible. The difference to other systems is that you create a web of thoughts instead of notes of arbitrary size and form, and emphasize connection, not a collection.
 
+This can be a bit difficult to achieve. I often end up with several notes with duplicated content. Perhaps making a conscious effort (or with suitable tools) to find links to previous thoughts can help to organise and grow my notes better.
+
 - https://zettelkasten.de/introduction/
 - https://zettelkasten.de/posts/overview/
 
 ## Learning in Public
 
-https://www.swyx.io/learn-in-public/
+Maintaining a public digital garden is an application of "Learn in Public". It's not about showing off how much you know - I don't think anyone is really interested in my writings anyway. What I think is that the knowledge that someone might just stumble across your possibly incoherent writings one day, makes you more aware and hopefully organise your thoughts more logically, and therefore learn better. It also helps me when I review my past notes. Just like coding, I should be able understand my own writings 6 months later. otherwise why write them down?
 
+- https://www.swyx.io/learn-in-public/
+- https://medium.com/my-learning-journal/why-you-should-learn-in-public-4fd3a6239549
 
 
