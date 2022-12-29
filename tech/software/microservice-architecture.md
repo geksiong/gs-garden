@@ -35,8 +35,14 @@ subgraph svcs[Microservices]
   dom2 --> db2[(Database)]
 end
 
-mesh[Service Mesh]
-svcs <--> mesh
+subgraph int_comms[Service-to-Service Communications]
+  direction TB
+  rpc[gRPC]
+  int_apigw[Internal API Gateway]
+  queue[Event Queues]
+  mesh[Service Mesh]
+end
+svcs <--> int_comms
 
 api_gateway --> svcs
 api_gateway --> idp[Identity Provider]
