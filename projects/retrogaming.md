@@ -30,6 +30,7 @@ The MHS35 LCD works out of the box.
 - I used LCD35-show instead of MHS35-show and that was horrible.
 - I installed the retropie version, not sure if it's any different.
 - The quality is not perfect, but don't really need to bother with trying to tweak it.
+- Go into retropie_setup and change the font to VGA small. Looks much more usable.
 - Screen has resistive touch capabilities, but I don't really need this.
 - Looks like I cannot toggle between LCD and HDMI without rebooting?
 - I can't find a way to programmtically power off the screen. Powering off the RPi ends up with a white screen.
