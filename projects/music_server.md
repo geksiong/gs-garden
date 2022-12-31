@@ -29,3 +29,5 @@ piCorePlayer does not have the ability to stream music to the web browser. It is
 ## DAC
 
 It's a HiFiBerry DAC clone. Configure in Squeezelite as HiFiBerry DAC Zero/MiniAMP. Sound is good.
+
+- Realised only later that the location of the connectors are on the short side of the Pi, and there are no cases to accomodate it. Likely I'll have to place everything inside a DIY enclosure.
