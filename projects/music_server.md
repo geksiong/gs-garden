@@ -40,6 +40,7 @@ I used the same 3.5 inch LCD I used for RetroPie, and simply followed the instru
 - I accidentally set another language instead of English, but couldn't find a way to change the language.
   - The UI actually has an 'Advanced Settings' section where you can change the language. But then again, I wouldn't know how to get there in a language I don't know...
   - The nuke option is to go into the pCP web config and 'Reset' Jivelite which will clear all its configuration, then reboot. However, you will lose other settings such as the background, screensaver, etc.
+- Jivelite doesn't save settings automatically. You need to go into "Settings" > "piCorePlayer" > "Save Settings to SD Card".
 - I decided to invert the display, and then the touchscreen threw me off as it wasn't inverted together with the display. To fix, change Jivelite to not autostart, recalibrate the touchscreen, and set Jivelite back to autostart again.
 - The spectrum analyzer and VU meter seem to have a tendency to freeze Jivelite. Could be due to my using an RPi 2. The music playback is not affected and LMS web page is still working fine.
 - To support CJK fonts, follow the instructions at https://forums.slimdevices.com/showthread.php?103330-Jivelite-for-piCorePlayer/page20 to replace the fonts.
