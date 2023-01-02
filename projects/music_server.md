@@ -108,7 +108,7 @@ My current GPIO pins layout are:
 - https://www.hackster.io/hardikrathod/push-button-with-raspberry-pi-6b6928
 - https://learn.adafruit.com/rotary-encoder/hardware
 
-> **TODO**: I can probably free up another rotary encoder (or more buttons), if I wire up the LCD using individual wires instead of the connector on the LCD.
+> **TODO**: I can probably squeeze in another rotary encoder (or more buttons), if I wire up the LCD using individual wires instead of directly using the LCD's onboard connector.
 
 ### Packages & Script
 
