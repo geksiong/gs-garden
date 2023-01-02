@@ -82,6 +82,7 @@ sudo ln -s /mnt/mmcblk0p2/tce/custom/HarmonyOS_Sans_SC_Bold.ttf FreeSansBold.ttf
 ### Others
 
 - The spectrum analyzer view seems unstable, however the music playback is not affected and LMS web page is still working fine. But it could be due to the VU Meter view which is not supported by the skin - after I disabled the VU Meter view, the spectrum analyzer seems to work fine.
+- "Power off" only powers off the LMS(?) service, not shutdown the Raspberry Pi! I don't think it's safe to pull the plug with this? 
 
 ## Buttons and Rotary Encoders
 
