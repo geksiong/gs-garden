@@ -82,3 +82,93 @@ sudo ln -s /mnt/mmcblk0p2/tce/custom/HarmonyOS_Sans_SC_Bold.ttf FreeSansBold.ttf
 ### Others
 
 - The spectrum analyzer view seems unstable, however the music playback is not affected and LMS web page is still working fine. But it could be due to the VU Meter view which is not supported by the skin - after I disabled the VU Meter view, the spectrum analyzer seems to work fine.
+
+## Buttons and Rotary Encoders
+
+I decided to add some physical controls to the setup. Someone has already written a guide here: https://docs.picoreplayer.org/projects/control-jivelite-by-rotary-encoders-and-buttons/. However, the guide has a very critical error which caused me to spend hours to troubleshoot. Turns out the sbpd command should be run in daemon mode with the `-d` parameter and that's missing from the guide. Also, those comments in the sbpd command shouldn't be in the actual script.
+
+### Wiring
+
+As I have both a DAC and LCD, this means most of the pins are used up. My DAC has pass through pins, and the LCD uses a 26-pin connector, I simply connected the LCD on top of the DAC. Following the guide above, this leaves only pins 29-34 free, just enough to wire up one push button and one rotary encoder (with push button).
+
+The rotary encoder must be one without power. Basically the one without a breakout board, with 3 pins on one side and 2 pins on the other side.
+
+My encoder pins are too soft to plug into a breadboard so I attach them with female-male jumper wires (not very secure).
+
+My current GPIO pins layout are:
+
+- pin 29 (GPIO 5): Rotary Up
+- pin 31 (GPIO 6): Rotary Down
+- pin 32 (GPIO 12): Rotary Button
+- pin 33 (GPIO 13): Push Button
+
+> **TODO**: I can probably free up another rotary encoder (or more buttons), if I wire up the LCD using individual wires instead of the connector on the LCD.
+
+### Packages & Script
+
+Following the guide:
+
+- Install the `pcp-sbpd` package (this is the only one needed, it will pull in the `pigpio` package)
+- Create the file `/home/tc/sbpd-script.sh`. Replace the actions with what you need:
+
+```sh
+#!/bin/sh
+
+# start pigpiod daemon
+pigpiod -t 0 -f -l -s 10
+
+# wait for pigpiod to initialize - indicated by 'pigs t' exit code of zero
+
+count=10 # approx time limit in seconds
+while ! pigs t >/dev/null 2>&1 ; do
+        if [ $((count--)) -le 0 ]; then
+                printf "\npigpiod failed to initialize within time limit\n"
+                exit 1
+        fi
+#       printf "\nWaiting for pigpiod to initialize\n"
+        sleep 1
+done
+printf "\npigpiod is running\n"
+
+# load uinput module - required to be able to send keystrokes
+# then set the permission to group writable, so you don't need to run sbpd with root permissions
+sudo modprobe uinput
+sudo chmod g+w /dev/uinput
+
+# The full list of Jivelite key commands can be found here:
+# https://github.com/ralph-irving/tcz-lirc/blob/master/jivekeys.csv
+
+# Button 1                                              # button-section, defines the GPIO and key-commands
+SW1=13                                                  # GPIO (BCM, not Board)
+SH1=KEY:KEY_LEFTBRACE                                   # key-command for SHORT press (Now Playing)
+LO1=KEY:KEY_POWER                                       # key-command for LONG press (Power)
+LMS1=250                                                # milliseconds for long press
+
+# Button rotary 1
+SW4=12
+SH4=KEY:KEY_ENTER                               # key-command for SHORT press (Enter)
+LO4=KEY:KEY_BACK                                # key-command for LONG press (Back)
+LMS4=250
+
+# Encoder Rotary 1
+EN1_UP=5
+EN1_DN=6
+EN1_CMD=KEY:KEY_UP-KEY_DOWN
+
+CMD="sbpd -d -f /home/tc/sbpd_commands.cfg \
+b,$SW1,$SH1,2,0,$LO1,$LMS1 \
+b,$SW4,$SH4,2,0,$LO4,$LMS4 \
+e,$EN1_UP,$EN1_DN,$EN1_CMD,4"
+
+echo $CMD
+$CMD > /dev/null 2>&1 &
+```
+
+  - You can also supply a `sbpd_commands.cfg` file to contain aliases for the keys. This is not really needed.
+  - For more information, checkout sbpd's GitHub repository: https://github.com/coolio107/SqueezeButtonPi-Daemon
+- Make the script executable: `sudo chmod +x /home/tc/sbpd-script.sh`
+- In the pCP web GUI, go to "Main" > "Tweaks" and set "User Commands" to run the script on boot.
+
+### Notes
+
+- The encoder doesn't always register. This is actually documented at sbpd's GitHub repo.
