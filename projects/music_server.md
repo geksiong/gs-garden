@@ -103,6 +103,11 @@ My current GPIO pins layout are:
 - pin 32 (GPIO 12): Rotary Button
 - pin 33 (GPIO 13): Push Button
 
+#### Resources
+
+- https://www.hackster.io/hardikrathod/push-button-with-raspberry-pi-6b6928
+- https://learn.adafruit.com/rotary-encoder/hardware
+
 > **TODO**: I can probably free up another rotary encoder (or more buttons), if I wire up the LCD using individual wires instead of the connector on the LCD.
 
 ### Packages & Script
@@ -165,6 +170,7 @@ echo $CMD
 $CMD > /dev/null 2>&1 &
 ```
 
+  - Use the key names documented here: https://github.com/ralph-irving/tcz-lirc/blob/master/jivekeys.csv (I think they work because LIRC is provided by default).
   - You can also supply a `sbpd_commands.cfg` file to contain aliases for the keys. This is not really needed.
   - For more information, checkout sbpd's GitHub repository: https://github.com/coolio107/SqueezeButtonPi-Daemon
 - Make the script executable: `sudo chmod +x /home/tc/sbpd-script.sh`
