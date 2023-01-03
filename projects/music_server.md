@@ -55,6 +55,8 @@ I used the same 3.5 inch LCD I used for RetroPie, and simply followed the instru
 
 ### Unicode Fonts
 
+#### The Hard Way (My Way)
+
 - Jivelite's fonts do not support CJK glyphs. To support CJK, follow the instructions at https://forums.slimdevices.com/showthread.php?103330-Jivelite-for-piCorePlayer/page20 to replace the fonts.
 
 To summarise the steps:
@@ -78,6 +80,9 @@ sudo ln -s /mnt/mmcblk0p2/tce/custom/HarmonyOS_Sans_SC_Bold.ttf FreeSansBold.ttf
 - From the web gui, under "Tweaks" > "User Commands", specify the path to this file `/mnt/mmcblk0p2/tce/custom/replaceJiveliteFonts.sh` so that pCP will run these commands on boot
 - Reboot and ssh in again to verify the fonts are soft-linked correctly. Test with your choice of music file with the Unicode metadata.
 
+#### The Easy Way (not tested)
+
+Under the "Advanced" menu there is an "Applet Installer". One of the applets is a Font Replacer which is supposed to replace the font with a merged FreeSans + Droid Sans font. 
 
 ### Others
 
