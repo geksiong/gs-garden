@@ -2,6 +2,7 @@
 title: Music Swerver
 description: Project notes on building a music server
 date: 2022-12-31
+updated: 2023-01-04
 ---
 
 ## Concept
@@ -45,7 +46,7 @@ I used the same 3.5 inch LCD I used for RetroPie, and simply followed the instru
 - Other things to configure:
   - Wallpaper
   - Screensavers: Many things don't work. I chose "Analog Clock".
-  - "Now Playing" views: The VU Meters don't work under 3.5-inch LCD screen, so disable them.
+  - "Now Playing" views
 - Jivelite doesn't save settings automatically. You need to go into "Settings" > "piCorePlayer" > "Save Settings to SD Card".
 
 ### Inverting the Display
@@ -88,6 +89,13 @@ Under the "Advanced" menu there is an "Applet Installer". One of the applets is 
 
 - The spectrum analyzer view seems unstable, however the music playback is not affected and LMS web page is still working fine. But it could be due to the VU Meter view which is not supported by the skin - after I disabled the VU Meter view, the spectrum analyzer seems to work fine.
 - "Power off" only powers off the LMS(?) service, not shutdown the Raspberry Pi! I don't think it's safe to pull the plug with this? 
+
+## Now Playing
+
+### VU Meters
+
+The VU Meters will not work out of the box. Need to install the VU Meter packages that end with 'wav35skin'. Even then, I found that only 'Logitech Black-wav35skin' works. Fortunately that one looks pretty good.
+
 
 ## Buttons and Rotary Encoders
 
