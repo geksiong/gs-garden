@@ -117,6 +117,11 @@ Make this change permanent similarly as the font replacement method - by changin
 
 I have no idea how to get a proper fix back to the maintainers...the project team seems to be using private repos for these parts.
 
+### LCD Backlight
+
+Jivelite actually comes with a brightness control but it works only for the official Pi LCD display. It would be nice if I can control the brightness on my 3.5-inch LCD. According to this discussion here it should be possible by manipulating the correct GPIO pin: https://tlfong01.blog/2020/03/12/lcd-display-backlit-control-notes/
+
+> **TODO**: coming soon, wish me luck
 
 ## Buttons and Rotary Encoders
 
