@@ -112,6 +112,8 @@ Basically the Clock Applet doesn't even know about the Wav35Skin. The hack here 
 Make this change permanent similarly as the font replacement method - by changing the softlinks to your new file.
 
 > However, doing this fixes the Digital Clock but breaks the Analog clock, so don't fix this if you prefer the analog clock...
+> 
+> Also, the Dot Matrix and Word Clocks are still broken.
 
 I have no idea how to get a proper fix back to the maintainers...the project team seems to be using private repos for these parts.
 
