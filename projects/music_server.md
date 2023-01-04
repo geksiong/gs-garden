@@ -45,7 +45,7 @@ I used the same 3.5 inch LCD I used for RetroPie, and simply followed the instru
   - The nuke option is to go into the pCP web config and 'Reset' Jivelite which will clear all its configuration, then reboot. However, you will lose other settings such as the background, screensaver, etc.
 - Other things to configure:
   - Wallpaper
-  - Screensavers: Many things don't work. I chose "Analog Clock".
+  - Screensavers
   - "Now Playing" views
 - Jivelite doesn't save settings automatically. You need to go into "Settings" > "piCorePlayer" > "Save Settings to SD Card".
 
@@ -90,11 +90,30 @@ Under the "Advanced" menu there is an "Applet Installer". One of the applets is 
 - The spectrum analyzer view seems unstable, however the music playback is not affected and LMS web page is still working fine. But it could be due to the VU Meter view which is not supported by the skin - after I disabled the VU Meter view, the spectrum analyzer seems to work fine.
 - "Power off" only powers off the LMS(?) service, not shutdown the Raspberry Pi! I don't think it's safe to pull the plug with this? 
 
-## Now Playing
 
-### VU Meters
+### Now Playing: VU Meters
 
 The VU Meters will not work out of the box. Need to install the VU Meter packages that end with 'wav35skin'. Even then, I found that only 'Logitech Black-wav35skin' works. Fortunately that one looks pretty good.
+
+### Screensavers: Clock Applet
+
+The Clock Applet is broken out of the box, but I finally found the "fix" at https://www.mail-archive.com/unix@lists.slimdevices.com/msg63028.html. Make a copy of `ClockApplet.lua` and add in 'Wav35Skin' in this part of the codes:
+
+```lua
+local function _isWQVGASkin(skinName)
+    if skinName == 'WQVGAsmallSkin' or skinName == 'WQVGAlargeSkin' or skinName == 'Wav35Skin' then
+         return true
+    end
+end
+```
+
+Basically the Clock Applet doesn't even know about the Wav35Skin. The hack here is to leverage on the existing WQVGASkin clock styles.
+
+Make this change permanent similarly as the font replacement method - by changing the softlinks to your new file.
+
+> However, doing this fixes the Digital Clock but breaks the Analog clock, so don't fix this if you prefer the analog clock...
+
+I have no idea how to get a proper fix back to the maintainers...the project team seems to be using private repos for these parts.
 
 
 ## Buttons and Rotary Encoders
