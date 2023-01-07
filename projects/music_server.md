@@ -47,6 +47,7 @@ I used the same 3.5 inch LCD I used for RetroPie, and simply followed the instru
   - Wallpaper
   - Screensavers
   - "Now Playing" views
+  - In "Settings" > "piCorePlayer", *deselect* "Enable Power On Button When Powered Off" (this allows you to "power off" the player, and then tap on the screen to turn it back on again)
 - Jivelite doesn't save settings automatically. You need to go into "Settings" > "piCorePlayer" > "Save Settings to SD Card".
 
 ### Inverting the Display
