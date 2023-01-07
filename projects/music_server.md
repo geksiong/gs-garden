@@ -121,6 +121,9 @@ I have no idea how to get a proper fix back to the maintainers...the project tea
 
 Jivelite actually comes with a brightness control but it works only for the official Pi LCD display. It would be nice if I can control the brightness on my 3.5-inch LCD. However, according to this [discussion here](https://tlfong01.blog/2020/03/15/tft-lcd-backlight-notes/) it's not possible because the display circuit didn't cater for this even though the chip is capable. So I can only do a so-called "Display Off" in Jivelite which is just a black screen.
 
+There are apparently screens that has backlight control, but the GPIO may conflict with the DAC.
+
+> **Lesson**: Get a HDMI LCD display. You'll get less fuss, more functionality, no potential for conflicts, and more GPIOs for knobs and buttons.
 
 ## Buttons and Rotary Encoders
 
