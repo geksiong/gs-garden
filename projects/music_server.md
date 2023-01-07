@@ -64,21 +64,21 @@ To summarise the steps:
 
 - Ensure you have ssh access to piCorePlayer
 - Get a unicode font e.g. Google Noto Sans, or Huawei's HarmonyOS Sans. I chose HarmonyOS Sans just to try it out, and I think it looks good so I'm keeping it.
-- Create a directory `/mnt/mmcblk0p2/tce/custom` (you could also just use `/mnt/mmcblk0p2/tce/optional` but I prefer to keep my custom hacks separate from the packages in there)
+- Create a directory `/mnt/mmcblk0p2/tce/fonts` (you could also just use `/mnt/mmcblk0p2/tce/optional` but I prefer to keep my custom hacks separate from the packages in there)
 - scp the fonts to the above directory
-- In the same directory, create `replaceJiveliteFonts.sh` with the following contents (replace font names accordingly):
+- Create `/home/tc/replaceJiveliteFonts.sh` (the guide uses a different location) with the following contents (replace font names accordingly):
 
 ```sh
 #!/bin/sh
 cd /opt/jivelite/share/jive/fonts
 sudo rm FreeSans.ttf
 sudo rm FreeSansBold.ttf
-sudo ln -s /mnt/mmcblk0p2/tce/custom/HarmonyOS_Sans_SC_Regular.ttf FreeSans.ttf
-sudo ln -s /mnt/mmcblk0p2/tce/custom/HarmonyOS_Sans_SC_Bold.ttf FreeSansBold.ttf
+sudo ln -s /mnt/mmcblk0p2/tce/fonts/HarmonyOS_Sans_SC_Regular.ttf FreeSans.ttf
+sudo ln -s /mnt/mmcblk0p2/tce/fonts/HarmonyOS_Sans_SC_Bold.ttf FreeSansBold.ttf
 ```
 
 - Make sure you `chmod 755 replaceJiveliteFonts.sh`
-- From the web gui, under "Tweaks" > "User Commands", specify the path to this file `/mnt/mmcblk0p2/tce/custom/replaceJiveliteFonts.sh` so that pCP will run these commands on boot
+- From the web gui, under "Tweaks" > "User Commands", specify the path to this file `/home/tc/replaceJiveliteFonts.sh` so that pCP will run these commands on boot
 - Reboot and ssh in again to verify the fonts are soft-linked correctly. Test with your choice of music file with the Unicode metadata.
 
 #### The Easy Way (not tested)
@@ -119,7 +119,7 @@ I have no idea how to get a proper fix back to the maintainers...the project tea
 
 ### LCD Backlight (can't be turned off)
 
-Jivelite actually comes with a brightness control but it works only for the official Pi LCD display. It would be nice if I can control the brightness on my 3.5-inch LCD. However, according to this [discussion here](https://tlfong01.blog/2020/03/15/tft-lcd-backlight-notes/) it's not possible because the display circuit didn't cater for this even though the chip is capable. So I can only do a "Display Off" which is just a black screen.
+Jivelite actually comes with a brightness control but it works only for the official Pi LCD display. It would be nice if I can control the brightness on my 3.5-inch LCD. However, according to this [discussion here](https://tlfong01.blog/2020/03/15/tft-lcd-backlight-notes/) it's not possible because the display circuit didn't cater for this even though the chip is capable. So I can only do a so-called "Display Off" in Jivelite which is just a black screen.
 
 
 ## Buttons and Rotary Encoders
