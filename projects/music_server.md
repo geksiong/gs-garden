@@ -116,6 +116,49 @@ Make this change permanent similarly as the font replacement method - by changin
 > 
 > Also, the Dot Matrix and Word Clocks are still broken.
 
+Update 2023-01-08: Partially fixed the Analog and DotMatrix clocks. Word clock still not working. I'll just post the diff below for now:
+
+`diff ClockApplet.lua /tmp/tcloop/pcp-jivelite/opt/jivelite/share/jive/applets/Clock/ClockApplet.lua`
+
+```lua
+--- ClockApplet.lua
++++ /tmp/tcloop/pcp-jivelite/opt/jivelite/share/jive/applets/Clock/ClockApplet.lua
+@@ -62,7 +62,7 @@
+ end
+
+ local function _isWQVGASkin(skinName)
+-    if skinName == 'WQVGAsmallSkin' or skinName == 'WQVGAlargeSkin' or skinName == 'Wav35Skin' then
++    if skinName == 'WQVGAsmallSkin' or skinName == 'WQVGAlargeSkin' then
+        return true
+     end
+ end
+@@ -81,12 +81,11 @@
+                skinName = 'JogglerSkin'
+
+        elseif _isWQVGASkin(skinName) then
+-               -- skinName = "WQVGAsmallSkin"
+-               skinName = "Wav35Skin"
++               skinName = "WQVGAsmallSkin"
+
+        elseif _isHDSkin(skinName) then
+                skinName = "HDSkin"
+-
++
+        end
+
+     return "applets/" .. skinName .. "/images/"
+@@ -980,7 +979,7 @@
+ function DotMatrix:getDotMatrixClockSkin(skinName)
+
+     -- 10' and 3'UIs send the same clock
+-    if skinName == 'WQVGAlargeSkin' or skinName == 'Wav35Skin' then
++    if skinName == 'WQVGAlargeSkin' then
+         skinName = 'WQVGAsmallSkin'
+     end
+
+```
+
+
 I have no idea how to get a proper fix back to the maintainers...the project team seems to be using private repos for these parts.
 
 ### LCD Backlight (can't be turned off)
