@@ -47,8 +47,8 @@ For example, `openssl req -out CSR.csr -key server.key -new -config myconfig.cnf
 ## Keys
 
 ### Generate a new key
-RSA key: `openssl genrsa -out server.key 2048`
-ECDSA key: `openssl ecparam -name secp256k1 -genkey -noout -out ec-key.key`
+- RSA key: `openssl genrsa -out server.key 2048`
+- ECDSA key: `openssl ecparam -name secp256k1 -genkey -noout -out ec-key.key`
 
 Note: do read up on the latest EC curve to use
 
@@ -59,8 +59,8 @@ Note: do read up on the latest EC curve to use
 `openssl rsa -in server.key -check`
 
 ### Get the public key in the key file
-RSA key: `openssl rsa -in server.key -pubout`
-ECDSA key: `openssl ec -in ec-key.key -pubout`
+- RSA key: `openssl rsa -in server.key -pubout`
+- ECDSA key: `openssl ec -in ec-key.key -pubout`
 
 ### Check a PKCS#12 file (.pfx or .p12)
 `openssl pkcs12 -info -in keyStore.p12`
