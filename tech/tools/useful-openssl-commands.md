@@ -1,25 +1,37 @@
 ---
 title: Useful OpenSSL commands
 date: 2019-07-30
+updated: 2023-02-01
 tags:
   - openssl
   - tech notes
 ---
-> A lot of online tutorials don't really mention one fact, and many people are confused about it - the "private" key file actually contains BOTH the private key and public key. This is necessary for PKI to work in the first place. You cannot derive a public key from a private key alone, and vice-versa.
 
-## List of Commands
+## Some Background
 
-### Generate a new private key and Certificate Signing Request
-`openssl req -out CSR.csr -new -newkey rsa:2048 -nodes -keyout privateKey.key`
+- Some articles confusingly refer to the key file as a private key. This is incorrect - the key file contains *both* public and private keys. This is necessary for PKI to work in the first place. Also, note that you cannot derive a public key from a private key alone, and vice-versa.
+- Most certificates are in PEM format.
+  - A .pem (Privacy Enhanced Mail) file may contain just the public certificate, or the entire certificate chain, and *maybe the private key*. Do not assume that a PEM file contains a private key.
+- You might sometimes encounter a PKCS#12 (or PFX) file
+  - A pkcs12 file contains an X.509 certificate or the entire certificate chain, *with a private key*.
+
+
+## Certificate Signing Requests
+
+### Generate a Certificate Signing Request
+
+- with new keys: `openssl req -out CSR.csr -new -newkey rsa:2048 -nodes -keyout myKeys.key`
+- with existing keys: `openssl req -out CSR.csr -key myKeys.key -new -config myconfig.cnf`
+- based on an existing certificate: `openssl x509 -x509toreq -in certificate.crt -out CSR.csr -signkey myKeys.key`
+
+
+## Certificates
 
 ### Generate a self-signed certificate
 `openssl req -x509 -sha256 -nodes -days 365 -newkey rsa:2048 -keyout privateKey.key -out certificate.crt`
 
-### Generate a certificate signing request (CSR) for an existing private key
-`openssl req -out CSR.csr -key privateKey.key -new -config myconfig.cnf`
 
-### Generate a certificate signing request based on an existing certificate
-`openssl x509 -x509toreq -in certificate.crt -out CSR.csr -signkey privateKey.key`
+## Key Files
 
 ### Remove a passphrase from a private key
 `openssl rsa -in privateKey.pem -out newPrivateKey.pem`
