@@ -14,6 +14,10 @@ So far my observations are:
 
 For now I'm back in MicroPython.
 
+### Documentation
+
+CircuitPython Core Libraries: https://circuitpython.readthedocs.io/en/latest/shared-bindings/index.html#modules
+
 
 ## Pico Pinout
 
