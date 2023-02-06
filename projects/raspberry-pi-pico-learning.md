@@ -3,16 +3,21 @@ title: Learning Raspberry Pi Pico
 description: My journey with the Raspberry Pi Pico
 date: 2023-02-05
 ---
-## Switch to CircuitPython?
+## CircuitPython
 
-The official firmware for the Pico is MicroPython, and I had been trying out tutorials with it. Then I discovered others are using CircuitPython. CircuitPython is built by Adafruit, on top of MicroPython. I thought it would be good to have a try, since MicroPython is quite low-level for some the things I wanted to do with the Pico. CircuitPython is also supposed to be more portable across different boards.
+The official framework supported by the Pico is MicroPython, but I quickly discovered Adafruit's CircuitPython, which seems rather popular among makers. After some initial confusion with following tutorials and understanding how things work, I decided to go with CircuitPython.
 
-So far my observations are:
-- going by the examples that people posted, the APIs can be quite verbose
-- I'm confused by how package management is supposed to work. Simply trying to install Adafruit's OLED SSD1306 package resulted in me running out of storage.
-- There's a community library bundle on Adafruit's GitHub, but it is obviously too big for the Pico's storage (only 1 Mb left after installing CircuitPython). Manually copying libs over and discovering more dependencies to copy just doesn't sound right.
+Some of my notes concerning CircuitPython:
 
-For now I'm back in MicroPython.
+- Installing CircuitPython is a simple matter of putting the Pico into bootsel mode by holding the button while plugging it to USB.
+- You can use Thonny (recommended by MicroPython) instead of the Mu editor (recommended by CircuitPython). I found that Mu editor is not much different from a general purpose Python IDE (might as well use VS Code). Thonny has some support for updating firmwares and uploading files to the device so I prefer Thonny. Otherwise, I would prefer the IDEs to provide more features such as Intellisense.
+- Do not search for CircuitPython libraries via Thonny's package search. I did that and found myself running out of storage.
+  - CircuitPython's libraries are to be directly copied into the lib folder on the device.
+  - Adafruit distributes an official bundle at their GitHub. I think most of what I'll need can be found here.
+  - There's also a community bundle.
+  - You need to download the correct versions depending on your CircuitPython version, as the library formats has changed.
+  - The lib files are distributed as .mpy files which are very compact.
+- CircuitPython will mount the device as a storage device everytime you plug it in. You can disable it by modifying the `boot.txt` file.
 
 ### Documentation
 
@@ -25,26 +30,15 @@ CircuitPython Core Libraries: https://circuitpython.readthedocs.io/en/latest/sha
 
 ## Learning Roadmap
 
-### Pushbutton
+I plan to learn the following:
 
-Ok this is the quintessential "Hello World". No issues here.
+- Pushbutton
+- Rotary encoder
+- Potentiometer (analog input)
+- OLED display (SSD1306 driver)
+- Play simple tone and tune
+- Play wav or mp3 file
 
-### (TODO) Rotary encoder
 
-
-### OLED display (SSD1306 driver)
-
-Experience was pretty good with MicroPython. But when I tried switching to CircuitPython I ran out the storage just trying to install the libs.
-
-### Play simple tone
-
-Via PWM pin output direct to speaker.
-Sound is not loud, probably because my speakers (ripped them out of old computer speakers) are 8 ohms. Not sure if I should get 4 ohm speakers instead. Definitely not a buzzer.
-
-I'm also unsure which amplifier board I should get.
-
-### (TODO) Play wav or mp3 file
-
-Not much success yet. So far the tutorials I found are based on CircuiyPython.
 
 
