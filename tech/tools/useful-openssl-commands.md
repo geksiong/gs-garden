@@ -16,6 +16,7 @@ tags:
   - A .pem (Privacy Enhanced Mail) file may contain just the public certificate, or the entire certificate chain, and/or *the private key*. Do not assume that a PEM file contains a private key.
 - You might sometimes encounter a PKCS#12 (or PFX) file
   - A .p12 or .pfx file contains an X.509 certificate or the entire certificate chain, *with a private key*.
+- The most portable format is actually DER (PKCS#8) format.
 - A CSR file contains only the public key. *It does not contain a private key*, as a CSR is used for submission to a third-party (certificate authority) to obtain your certificate.
 
 
