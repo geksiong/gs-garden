@@ -10,9 +10,6 @@ updated: 2023-01-04
 - Board: Raspberry Pi 2
 - OS: piCorePlayer
 - Hifi DAC Hat from Taobao: https://item.taobao.com/item.htm?spm=a1z09.2.0.0.3c052e8dYwoG66&id=564203353411&_u=v1qg627kd223 (same item on AliExpress: https://www.aliexpress.com/item/1005004050985603.html)
-
-Future ideas:
-
 - LCD screen, via Jivelite
 - Rotary encoder and buttons for navigating the LCD display
 
@@ -28,6 +25,38 @@ piCorePlayer consists of a server and player:
 piCorePlayer does not have the ability to stream music to the web browser. It is designed to output to loudspeakers.
 
 Default SSH password: tc / piCore 
+
+### Illustration of My Setup
+
+```mermaid
+flowchart LR
+  subgraph rpi["Raspberry Pi 2"]
+    subgraph picoreplayer["piCorePlayer"]
+      squeezelite["SqueezeLite"]
+      lms["Logitech Media Server"]
+  
+      jivelite["Jivelite GUI"] --> lms
+      webgui["Web GUI (Material Skin)"] --> lms
+      
+      lms --stream--> squeezelite
+    end
+  end
+  
+  nas[("Music on NAS")]
+  lms --fetch music files -->nas
+
+  subgraph hardware["Hardware Add-ons"]
+    controls["Buttons & Knobs"]
+    lcd["SPI LCD Screen"]
+    hifidac["HiFi DAC Hat"]
+  end
+  
+  controls --> lms
+  squeezelite --send audio to--> hifidac
+  lcd --view--> jivelite
+  browser["Web browser"] --view--> webgui
+```
+
 
 ## DAC
 
