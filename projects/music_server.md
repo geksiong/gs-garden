@@ -2,7 +2,7 @@
 title: Music Swerver
 description: Project notes on building a music server
 date: 2022-12-31
-updated: 2023-01-04
+updated: 2023-02-11
 ---
 
 ## Concept
