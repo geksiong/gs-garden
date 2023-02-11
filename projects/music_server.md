@@ -267,14 +267,25 @@ $CMD > /dev/null 2>&1 &
 
 - The encoder doesn't always register. This is actually documented at sbpd's GitHub repo.
 
-## piCorePlayer Plugins
+## LMS Plugins
+
+Note: I'm not sure how many plugins I can safely install. I had some wonky behaviour once and had to re-install LMS and re-setup from scratch (the LMS not the entire pCP). I decided to remove all plugins that I definitely don't need just in case.
 
 ### YouTube
 
+- Follow the instructions at https://github.com/philippe44/LMS-YouTube to get a YouTube API Key
+- Seems to work well
+- This plugin works best from the web GUI. Manually add your YouTube urls to a playlist.
 
 ### AirPlay
+
+- Didn't seem to work well from my Mac, so I decided to uninstall it.
 
 
 ### ChromeCast
 
-
+- It took some fiddling before I realised I should save settings before trying anything further.
+- I selected the 'squeeze2cast-linux-arm' binary.
+- After that it's pretty much autoscan. No further settings required.
+- It managed to detect both my old ChromeCast Audio (too bad it's discontinued), and the Chromecast on my Xiaomi TV Box.
+- The way to use this is to go into 'Settings > Player > Synchronise' and select the Chromecast player you wish to sync with.
