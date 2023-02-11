@@ -27,6 +27,8 @@ piCorePlayer consists of a server and player:
 
 piCorePlayer does not have the ability to stream music to the web browser. It is designed to output to loudspeakers.
 
+Default SSH password: tc / piCore 
+
 ## DAC
 
 It's a HiFiBerry DAC clone. Configure in Squeezelite as HiFiBerry DAC Zero/MiniAMP. Sound is good.
@@ -264,3 +266,15 @@ $CMD > /dev/null 2>&1 &
 ### Notes
 
 - The encoder doesn't always register. This is actually documented at sbpd's GitHub repo.
+
+## piCorePlayer Plugins
+
+### YouTube
+
+
+### AirPlay
+
+
+### ChromeCast
+
+
