@@ -289,3 +289,5 @@ Note: I'm not sure how many plugins I can safely install. I had some wonky behav
 - After that it's pretty much autoscan. No further settings required.
 - It managed to detect both my old ChromeCast Audio (too bad it's discontinued), and the Chromecast on my Xiaomi TV Box.
 - The way to use this is to go into 'Settings > Player > Synchronise' and select the Chromecast player you wish to sync with.
+- Volume can be separately controlled for each device.
+- My main gripe is that access to the synchronise menu is quite deep. Ideally I can select devices at the home page just as with the volume.
