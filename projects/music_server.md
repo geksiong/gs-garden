@@ -291,3 +291,17 @@ Note: I'm not sure how many plugins I can safely install. I had some wonky behav
 - The way to use this is to go into 'Settings > Player > Synchronise' and select the Chromecast player you wish to sync with.
 - Volume can be separately controlled for each device.
 - On the Material Skin GUI, you can click on the Raspberry Pi icon on the top left to quickly manage the synchronised devices.
+
+### Other plugins
+
+I also installed the following plugins:
+
+- Podcasts
+- Song Info + Song Lyrics
+- What was that Tune?
+
+The following plugins I haven't used yet but look interesting:
+
+- SqueezeboxEQ - equaliser
+- SqueezeCloud - integration with SoundCloud
+- SqueezeESP32 - hardware based on ESP32
