@@ -2,35 +2,32 @@
 title: Raspberry Pi Music Server
 description: Project notes on building a music server with a Raspberry Pi
 date: 2022-12-31
-updated: 2023-02-11
+updated: 2023-02-12
 ---
 
 ## Concept
 
+I setup my Raspberry Pi 2 with piCorePlayer. Previously I was using Volumio, which was pretty nice too, but piCorePlayer looks more interesting to me so I wanted to try it out.
+
 - Board: Raspberry Pi 2
 - OS: piCorePlayer
-- Hifi DAC Hat from Taobao: https://item.taobao.com/item.htm?spm=a1z09.2.0.0.3c052e8dYwoG66&id=564203353411&_u=v1qg627kd223 (same item on AliExpress: https://www.aliexpress.com/item/1005004050985603.html)
-- LCD screen, via Jivelite
-- Rotary encoder and buttons for navigating the LCD display
 
-## piCorePlayer
+### Roadmap
 
-piCorePlayer consists of a server and player:
+Got quite a few ideas for this build...
 
-- Player: Squeezelite
-- Server: Logitech Media Server
-- Installed the web interface. Default port is 9000.
-- I mounted the music library from my Synology NAS, via CIFS interface.
+- [x] Hifi DAC Hat from Taobao: https://item.taobao.com/item.htm?spm=a1z09.2.0.0.3c052e8dYwoG66&id=564203353411&_u=v1qg627kd223 (same item on AliExpress: https://www.aliexpress.com/item/1005004050985603.html)
+- [x] LCD screen, displayed via Jivelite
+- [ ] (partially done) Rotary encoders and buttons for navigating the LCD display
+- [ ] Hardware power/shutdown button
+- [ ] Hardware power off LCD backlight
 
-piCorePlayer does not have the ability to stream music to the web browser. It is designed to output to loudspeakers.
-
-Default SSH password: tc / piCore 
-
-### Illustration of My Setup
+### Illustration of My Current Setup
 
 ```mermaid
-flowchart LR
+flowchart TB
   subgraph rpi["Raspberry Pi 2"]
+  
     subgraph picoreplayer["piCorePlayer"]
       squeezelite["SqueezeLite"]
       lms["Logitech Media Server"]
@@ -39,26 +36,56 @@ flowchart LR
       webgui["Web GUI (Material Skin)"] --> lms
       
       lms --stream--> squeezelite
+      
+      ccbridge["Chromecast bridge plugin"]
+      lms --stream--> ccbridge
     end
+    
+   subgraph hardware["Hardware Add-ons"]
+      controls["Buttons & Knobs"]
+      lcd["SPI LCD Screen"]
+      hifidac["HiFi DAC Hat"]
+    end
+
+    controls --> lms
+    squeezelite --send audio to--> hifidac
+    lcd --view--> jivelite
+
   end
   
   nas[("Music on NAS")]
   lms --fetch music files -->nas
 
-  subgraph hardware["Hardware Add-ons"]
-    controls["Buttons & Knobs"]
-    lcd["SPI LCD Screen"]
-    hifidac["HiFi DAC Hat"]
-  end
-  
-  controls --> lms
-  squeezelite --send audio to--> hifidac
-  lcd --view--> jivelite
   browser["Web browser"] --view--> webgui
+  
+  chromecast["One or more Chromecasts"]
+  ccbridge --> chromecast
 ```
 
+### Project repository
 
-## DAC
+https://github.com/geksiong/piCorePlayer-mods
+
+## piCorePlayer
+
+piCorePlayer consists of a server and player:
+
+- Player: Squeezelite - this is the component that plays audio on the speakers
+- Server: Logitech Media Server - indexes and servers the music from various sources
+
+You can actually install the player and server on separate devices. Multiple players can connect to a single LMS.
+
+### Initial setup:
+
+- Installed the LMS web interface. Default port is 9000.
+- I mounted the music library from my Synology NAS, via CIFS interface.
+
+piCorePlayer does not have the ability to stream music to the web browser. It is designed to output to loudspeakers.
+
+Default SSH password: tc / piCore 
+
+
+## Audio DAC
 
 It's a HiFiBerry DAC clone. Configure in Squeezelite as HiFiBerry DAC Zero/MiniAMP. Sound is good.
 
@@ -119,7 +146,7 @@ Under the "Advanced" menu there is an "Applet Installer". One of the applets is 
 
 ### Others
 
-- The spectrum analyzer view seems unstable, however the music playback is not affected and LMS web page is still working fine. But it could be due to the VU Meter view which is not supported by the skin - after I disabled the VU Meter view, the spectrum analyzer seems to work fine.
+- The spectrum analyzer view seems unstable, however the music playback is not affected and LMS web page is still working fine. I realised later that this is due to VU Meters being incompatible with the Wav35Skin skin.
 - "Power off" only powers off the LMS(?) service, not shutdown the Raspberry Pi! I don't think it's safe to pull the plug with this? 
 
 
