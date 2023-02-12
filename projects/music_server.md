@@ -17,7 +17,7 @@ I setup my Raspberry Pi 2 with piCorePlayer. Previously I was using Volumio, whi
 Got quite a few ideas for this build...
 
 - [x] Hifi DAC Hat from Taobao: https://item.taobao.com/item.htm?spm=a1z09.2.0.0.3c052e8dYwoG66&id=564203353411&_u=v1qg627kd223 (same item on AliExpress: https://www.aliexpress.com/item/1005004050985603.html)
-- [x] LCD screen, displayed via Jivelite
+- [x] 3.5-inch LCD screen, displayed via Jivelite
 - [ ] (partially done) Rotary encoders and buttons for navigating the LCD display
 - [ ] Hardware power/shutdown button
 - [ ] Hardware power off LCD backlight
@@ -174,7 +174,7 @@ Make this change permanent similarly as the font replacement method - by changin
 > 
 > Also, the Dot Matrix and Word Clocks are still broken.
 
-Update 2023-01-08: Partially fixed the Analog and DotMatrix clocks. Word clock still not working. I'll just post the diff below for now:
+**Update 2023-01-08:** Partially fixed the Analog and DotMatrix clocks. Word clock still not working. I'll just post the diff below for now:
 
 `diff ClockApplet.lua /tmp/tcloop/pcp-jivelite/opt/jivelite/share/jive/applets/Clock/ClockApplet.lua`
 
@@ -216,6 +216,7 @@ Update 2023-01-08: Partially fixed the Analog and DotMatrix clocks. Word clock s
 
 ```
 
+**Update 2023-02-12:** More fixes to the Digital and Dot Matrix clocks (check out the project repo for latest codes). The Word Clock is still broken. There's also a Radial Clock that's currently missing.
 
 I have no idea how to get a proper fix back to the maintainers...the project team seems to be using private repos for these parts.
 
