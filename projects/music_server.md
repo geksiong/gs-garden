@@ -1,6 +1,6 @@
 ---
-title: Music Swerver
-description: Project notes on building a music server
+title: Raspberry Pi Music Server
+description: Project notes on building a music server with a Raspberry Pi
 date: 2022-12-31
 updated: 2023-02-11
 ---
@@ -326,7 +326,7 @@ Note: I'm not sure how many plugins I can safely install. I had some wonky behav
 I also installed the following plugins:
 
 - Podcasts
-- Song Info + Song Lyrics
+- Music and Artist Information
 - What was that Tune?
 
 The following plugins I haven't used yet but look interesting:
