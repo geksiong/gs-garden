@@ -60,6 +60,7 @@ I plan to learn the following:
   - [ ] wav
 - [x] timing
 - [ ] USB HID
+- [ ] USB Midi
 
 
 
