@@ -59,8 +59,10 @@ I plan to learn the following:
   - [x] mp3
   - [ ] wav
 - [x] timing
+- [ ] microphone input
 - [ ] USB HID
 - [ ] USB Midi
+- [ ] ulab (built-in math lib)
 
 
 
