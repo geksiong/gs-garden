@@ -37,12 +37,28 @@ CircuitPython Core Libraries: https://circuitpython.readthedocs.io/en/latest/sha
 
 I plan to learn the following:
 
-- Pushbutton
-- Rotary encoder
-- Potentiometer (analog input)
+- [x] Pushbutton
+- [x] Rotary encoder (both the knob and its pushbutton)
+- [ ] Potentiometer (analog input)
+- LED
+  - [ ] basic LED
+  - [ ] RGB LED
+  - [ ] pulse
+  - [ ] WS2812 LED strip
 - OLED display (SSD1306 driver)
+  - [x] text
+  - [x] draw lines
+  - [ ] display image file
+  - animation
+    - [ ] scrolling text
+    - [ ] sprites
 - Play simple tone and tune
-- Play wav or mp3 file
+  - [x] simpleio
+  - [ ] musical notes
+- Play audio file
+  - [x] mp3
+  - [ ] wav
+- [x] timing
 
 
 
