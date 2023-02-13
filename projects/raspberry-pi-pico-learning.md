@@ -59,6 +59,7 @@ I plan to learn the following:
   - [x] mp3
   - [ ] wav
 - [x] timing
+- [ ] USB HID
 
 
 
