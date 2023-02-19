@@ -24,6 +24,8 @@ import storage
 storage.disable_usb_drive()
 ```
 
+tip: I saw a fancier script where it checks for a button press, so that you can selectively mount the folder by holding down the button during boot.
+
 ### Documentation
 
 CircuitPython Core Libraries: https://circuitpython.readthedocs.io/en/latest/shared-bindings/index.html#modules
@@ -40,11 +42,12 @@ I plan to learn the following:
 - [x] Pushbutton
 - [x] Rotary encoder (both the knob and its pushbutton)
 - [ ] Potentiometer (analog input)
+- [ ] analog joystick
 - LED
   - [ ] basic LED
   - [ ] RGB LED
   - [ ] pulse
-  - [ ] WS2812 LED strip
+  - [ ] WS2812 LED strip / ring
 - OLED display (SSD1306 driver)
   - [x] text
   - [x] draw lines
@@ -56,14 +59,35 @@ I plan to learn the following:
   - [x] simpleio
   - [ ] musical notes
 - Play audio file
-  - [x] mp3
-  - [ ] wav
+  - [x] mp3 via PWM
+  - [ ] wav via PWM
+  - [x] mp3 via I2S audio output
+    - my audio board (MAX9857A) seems to have unstable volume and crackling. Not sure if I screwed up the soldering of the header pins.
 - [x] timing
-- [ ] microphone input
+- [?] microphone input
+  - this is more frustrating than I expected. I bought an I2S mic, only to find out that CircuitPython has yet to support I2S input. Adafruit now sells a "PDM mic breakout board" with CircuitPython support which I cannot find anywhere else. They claim that it is easier to implement the PDM input API than a full I2S input.
+      - looks like the only alternative is to get an analog mic and sample the analog pin directly. Not sure if this will work well for my purposes.
 - [ ] USB HID
 - [ ] USB Midi
 - [ ] ulab (built-in math lib)
+  - for vumeter display
+  - for fft spectrum display
+
+### I2S
 
 
+### I2C
+
+
+### SPI
+
+
+### Multiplexer
+
+
+### IO Expander
+
+
+### Shift Register
 
 
