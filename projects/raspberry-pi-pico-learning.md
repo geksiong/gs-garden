@@ -67,6 +67,7 @@ I plan to learn the following:
 - [?] microphone input
   - this is more frustrating than I expected. I bought an I2S mic, only to find out that CircuitPython has yet to support I2S input. Adafruit now sells a "PDM mic breakout board" with CircuitPython support which I cannot find anywhere else. They claim that it is easier to implement the PDM input API than a full I2S input.
       - looks like the only alternative is to get an analog mic and sample the analog pin directly. Not sure if this will work well for my purposes.
+      - https://www.hackster.io/AlexWulff/adc-sampling-and-fft-on-raspberry-pi-pico-f883dd
 - [ ] USB HID
 - [ ] USB Midi
 - [ ] ulab (built-in math lib)
