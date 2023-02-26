@@ -70,6 +70,14 @@ The sound is much better. I used the 3.3V output instead of a separate 5V source
 
 I suppose using the I2S DAC also reduces some processing load, compared to using the "NoDAC" approach.
 
+## OLED Display
+
+I'm using a 128x32 ssd1306 OLED display. The library to use is https://github.com/ThingPulse/esp8266-oled-ssd1306
+
+The main thing to note is that by default SDA is GPIO 4 and SCL/SCK is GPIO 5.
+
+The library comes with many example. Remember to call `display.display()` to actually display the contents.
+
 ## Other Resources
 
 - https://github.com/smurf0969/ESP32_ESP8266_WiFi_Speaker_OLED
