@@ -46,15 +46,25 @@ The library assumes an I2S interface. However, it conveniently provides a "NoDAC
 
 Note that the NodeMCU is not able to drive a speaker directly. You need to use an amplifier.
 
-#### 1-bit transistor amplifier
+#### 1-Transistor Amplifier
 
-If you don't have an amplifier module, you can also use a quick-and-dirty 1-bit transistor amplifier described, using a 2N2222 transistor, in place of the 2N3904 mentioned in the docs (they are supposed to be quite identical for the purpose) and a 1k ohm resistor.
+If you don't have an amplifier module, you can also use a quick-and-dirty 1-transistor amplifier described, using a 2N2222 transistor, in place of the 2N3904 mentioned in the docs (they are supposed to be quite identical for the purpose) and a 1k ohm resistor.
+
+I supplied 3.3V to the speaker instead of a 5V source. The sound is output to GPIO 3 (RX) pin only. You have to disconnect the pin during uploading, and reconnect it after it's done.
 
 This setup works but the sound is pretty bad.
 
 ### I2S DAC
 
 I have a MAX98357A board so I tried that next.
+
+Specific pins are required to make this work.
+
+- GPIO  2 --> LRC
+- GPIO 15 --> BCLK
+- GPIO  3 --> DIN (notice it's the same pin as used in the 1-transistor amp)
+
+I can upload fine with these pins are connected.
 
 The sound is much better. I used the 3.3V output instead of a separate 5V source, but it seems ok. Sound is quite loud on the 8 ohm 0.4W speaker I used.
 
@@ -66,4 +76,5 @@ I suppose using the I2S DAC also reduces some processing load, compared to using
 - The volume seems to work initially, but after a period of playback the volume became load again. Might be a bug with the library.
 - I might try a PAM8403 amplifier board (not I2S) with onboard volume control, but that might mean more load on the CPU which might affect the playback.
 - There are tutorials out there using the VS1053 MP3 decoding board. I believe that will make the playback much better (although limited to MP3). But this board is not that cheap so I'm hesitant to get one.
+- The doc mentions an SPI RAM board for better buffering. I looked around and couldn't find a source for the mentoned board, although there seems to be some similar ones but I don't know enough. Also, they are not that cheap.
 - Perhaps the ESP8266 is no longer a good enough device for this use case. Maybe I should upgrade to an ESP32 instead?
