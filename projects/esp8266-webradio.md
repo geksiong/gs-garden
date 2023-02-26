@@ -70,6 +70,10 @@ The sound is much better. I used the 3.3V output instead of a separate 5V source
 
 I suppose using the I2S DAC also reduces some processing load, compared to using the "NoDAC" approach.
 
+## Other Resources
+
+- https://github.com/smurf0969/ESP32_ESP8266_WiFi_Speaker_OLED
+
 ## Thoughts so far
 
 - The board seems to be rather slow. The instructions say to build for 160MHz CPU, but I don't know whether that made any difference. It take some time to connect to the WiFi network and start the stream. Initially I had a lot of instability, then I got a period of long stable output. Changing radio streams can be quite unstable.
