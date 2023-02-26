@@ -22,7 +22,7 @@ First to sort out some common confusion with the terminology:
 - Clock speed: 80 MHz
 - SRAM: 64 kB
 - Flash: 4 MB
-- 16 x Digital Pins, 1 x Analog Pin
+- 11 x Digital Pins, 1 x Analog Pin
 - 1 x SPI, 1 x I2C, 1 x UART
 - Note: the board only provides 3.3V to components, even though it take in 5V input.
 
