@@ -81,6 +81,7 @@ The library comes with many example. Remember to call `display.display()` to act
 ## Other Resources
 
 - https://github.com/smurf0969/ESP32_ESP8266_WiFi_Speaker_OLED
+- https://randomnerdtutorials.com/esp8266-pinout-reference-gpios/
 
 ## Thoughts so far
 
