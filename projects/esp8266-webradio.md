@@ -19,10 +19,11 @@ First to sort out some common confusion with the terminology:
 
 ![NodeMCU v0.9 Pinout](https://mechatronicsblog.com/wp-content/uploads/2019/01/NodeMCUV1-pinout.jpg)
 
-- Clock speed: 80 MHz
+- Clock speed: 80 MHz (can increase to 160 MHz)
 - SRAM: 64 kB
 - Flash: 4 MB
-- 11 x Digital Pins, 1 x Analog Pin
+- EEPROM: 4 Kb
+- 11 x Digital Pins (see Limitations below), 1 x Analog Pin
 - 1 x SPI, 1 x I2C, 1 x UART
 - Note: the board only provides 3.3V to components, even though it take in 5V input.
 
@@ -30,11 +31,28 @@ First to sort out some common confusion with the terminology:
 
 ### Limitations
 
+You get much fewer pins than appears on the specifications. Depending on what you want to do, they can be quite a challenge to use.
+
 - GPIOs 6 to 11 are unavailable for use, as they are connected to the Flash chip
 - GPIO 0 is tricky to use, it is connected to the Flash button, and can cause the board to go into Flash mode
 - GPIO 1 and 2 are tricky to use, they can cause the board to fail to boot
 - A few other pins are pulled High during boot, which may be a problem for your components depending on what you want to do
+- Some pins are fixed for specific uses:
+  - I2C
+    - GPIO 4: SDA
+    - GPIO 5: SCL
+  - SPI
+    - GPIO 12: MISO
+    - GPIO 13: MOSI
+    - GPIO 14: SCLK
+    - GPIO 15: CS
+  - I2S
+    - GPIO 2: LRC
+    - GPIO 3: DIN
+    - GPIO 15: BCLK
+  - It's not clear to me whether any of them are re-assignable to other pins (e.g. SPI and I2S)
 - Analog pin is input only
+
 
 ## Web Radio
 
