@@ -27,7 +27,9 @@ First to sort out some common confusion with the terminology:
 - 1 x SPI, 1 x I2C, 1 x UART
 - Note: the board only provides 3.3V to components, even though it take in 5V input.
 
-> Note that I'm using Arduino IDE (C language) instead of NodeMCU (Lua language).
+### Programming Language
+
+The board by default comes with the NodeMCU firmware which uses Lua. I've switched to the Arduino IDE using C instead.
 
 ### Limitations
 
