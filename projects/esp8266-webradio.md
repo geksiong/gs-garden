@@ -28,6 +28,14 @@ First to sort out some common confusion with the terminology:
 
 > Note that I'm using Arduino IDE (C language) instead of NodeMCU (Lua language).
 
+### Limitations
+
+- GPIOs 6 to 11 are unavailable for use, as they are connected to the Flash chip
+- GPIO 0 is tricky to use, it is connected to the Flash button, and can cause the board to go into Flash mode
+- GPIO 1 and 2 are tricky to use, they can cause the board to fail to boot
+- A few other pins are pulled High during boot, which may be a problem for your components depending on what you want to do
+- Analog pin is input only
+
 ## Web Radio
 
 Web Radio is probably one of the common use cases for this microcontroller. There are several tutorials out there, and it can get quite confusing.
