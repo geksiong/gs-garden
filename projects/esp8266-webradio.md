@@ -106,6 +106,18 @@ The main thing to note is that by default SDA is GPIO 4 and SCL/SCK is GPIO 5.
 
 The library comes with many example. Remember to call `display.display()` to actually display the contents.
 
+## Reading the Analog Pin
+
+The goal is to use a potentiometer to set the volume.
+
+The common potentiometer is just a variable resistor and current can go both ways, so you can swap the ground and power lines depending on the desired knob rotation direction. I read there are some kinds of pots that must be wired a certain way but that's not what I have.
+
+### Gotcha for ESP8266
+
+I keep getting reboots when I added the pot, which is extremely puzzling because the code is so direct and simple. Until I found this: https://github.com/esp8266/Arduino/issues/1634
+
+Apparently the reason is that the analog pin is also used to decide WiFi strength? And apparently adding a 3ms delay will work? That's weird... 
+
 ## Other Resources
 
 - https://github.com/smurf0969/ESP32_ESP8266_WiFi_Speaker_OLED
