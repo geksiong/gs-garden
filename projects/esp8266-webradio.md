@@ -116,7 +116,9 @@ The common potentiometer is just a variable resistor and current can go both way
 
 I keep getting reboots when I added the pot, which is extremely puzzling because the code is so direct and simple. Until I found this: https://github.com/esp8266/Arduino/issues/1634
 
-Apparently the reason is that the analog pin is also used to decide WiFi strength? And apparently adding a 3ms delay will work? That's weird... 
+Apparently the reason is that the analog pin is also used to decide WiFi strength? And apparently adding a 3ms delay will work? That's weird...
+
+Update: after some success, I still can get the reboots sometimes. I think this might be a lost cause. My current conclusion is that WiFi and analog pin cannot be used concurrently...
 
 ## Other Resources
 
