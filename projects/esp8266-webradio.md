@@ -118,7 +118,19 @@ I keep getting reboots when I added the pot, which is extremely puzzling because
 
 Apparently the reason is that the analog pin is also used to decide WiFi strength? And apparently adding a 3ms delay will work? That's weird...
 
-Update: after some success, I still can get the reboots sometimes. I think this might be a lost cause. My current conclusion is that WiFi and analog pin cannot be used concurrently...
+Update: using `millis()` to decide when to read the pot seems unstable. What works reliably for me in the end is to count the loops, as suggested here: 
+
+https://arduino.stackexchange.com/questions/19787/esp8266-analog-read-interferes-with-wifi
+
+```c
+if (serialCount == 10000) {
+  ldrState = map(analogRead(ldrPin), ldrMin, ldrMax, 0, 100);
+  Serial.println(ldrState);
+  serialCount = 0;
+} else {
+  serialCount ++;
+}
+```
 
 ## Other Resources
 
