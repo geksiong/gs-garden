@@ -132,6 +132,8 @@ if (serialCount == 10000) {
 }
 ```
 
+Update #2: Still getting reboots after some time. It's possible that the analog pin cannot be used together with WiFi, so I might have to switch to a rotary encoder. Another possibility is that I learnt that the ESP8266 "timer" resets after about 72 mins (versus the Arduino which resets in 49 days). Of course, it could also just be a dropped WiFi connection. I need to conduct further testing.
+
 ## Other Resources
 
 - https://github.com/smurf0969/ESP32_ESP8266_WiFi_Speaker_OLED
