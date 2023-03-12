@@ -84,7 +84,7 @@ This setup works but the sound is pretty bad.
 
 ### I2S DAC
 
-I have a MAX98357A board so I tried that next.
+I have a MAX98357A board so I tried that next. It's actually a DAC plus amplifier.
 
 Specific pins are required to make this work.
 
@@ -132,7 +132,7 @@ if (serialCount == 10000) {
 }
 ```
 
-Update #2: Still getting reboots after some time. It's possible that the analog pin cannot be used together with WiFi, so I might have to switch to a rotary encoder. Another possibility is that I learnt that the ESP8266 "timer" resets after about 72 mins (versus the Arduino which resets in 49 days). Of course, it could also just be a dropped WiFi connection. I need to conduct further testing.
+Update #2: Still getting reboots after some time. It's possible that the analog pin cannot be used together with WiFi, so I might have to switch to a rotary encoder. Another possibility is that I learnt that the ESP8266 "timer" resets after about 72 mins (versus the Arduino which resets in 49 days) (update: there's some contention regarding the 72 min claim). Of course, it could also just be a dropped WiFi connection. I need to conduct further testing.
 
 ## Other Resources
 
@@ -148,3 +148,30 @@ Update #2: Still getting reboots after some time. It's possible that the analog 
 - There are tutorials out there using the VS1053 MP3 decoding board. I believe that will make the playback much better (although limited to MP3). But this board is not that cheap so I'm hesitant to get one.
 - The doc mentions an SPI RAM board for better buffering. I looked around and couldn't find a source for the mentoned board, although there seems to be some similar ones but I don't know enough. Also, they are not that cheap.
 - Perhaps the ESP8266 is no longer a good enough device for this use case. Maybe I should upgrade to an ESP32 instead?
+
+## Update 2023-03-12: Further Tinkering
+
+I've been tinkering with the board and trying to add more functionality to the Web Radio, but so far it's been pretty unstable overall.
+
+### Using GPIO16 as button
+
+I wanted a button to start/stop the audio.
+
+GPIO16 (D0) is not the best pin to place a button on, but I read that it can be used for input. Instead of internal pull-ups, this pin has a pull-down resistor. However, I couldn't figure out how it's supposed to work. Whether I use the internal pull-down resistor, or just configure as input and wire my own pull-down circuit, I keep getting ghost button presses at random places.
+
+### Chinese characters on SSD1306 OLED display
+
+This is an interesting sidetrack. Since the radio station I want to listen to is in Chinese, it would be nice to be able to display Chinese characters on the OED display. Due to the size of the Chinese character set and complexity of the font, it is not easy to squeeze everything into the confines of the ESP8266.
+
+I finally found a working solution, using the U8g2 lib, but it splits the Chinese characters into 3 which doesn't seem sufficient for my needs. Then I found a lib called 'Arduino_GFX_Library' where the author created another Chinese U8g2 font based on the most common characters. I tried this combo and it seems to perform quite well.
+
+To fit the Chinese font into the buiild I needed to reduce the filesystem to 1 Mb, and the adjust MMU to give 16 Kb cache + 48 Kb IRAM.
+
+### Fetching song titles
+
+The radio stream I listen to streams from StreamTheWorld, but it does not carry song title information. Some searching brought me to OnlineRadioBox which appears to redirect from StreamTheWorld, but also provides a separate API to fetch the song title. I discovered the API is a long-polling type, which may respond only after about 3 minutes (input param is the timestamp of the last request), so I used the AsyncHTTPRequest_Generic library together with the ArduinoJson library to parse the JSON response.
+
+This increased the memory pressure on the NodeMCU. I didn't have much left to begin with, and with this I started getting memory access exceptions and OOM.
+
+Looks like I might have to get an ESP32 board after all, if I still want to make this thing.
+
