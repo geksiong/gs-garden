@@ -38,6 +38,7 @@ tags:
 - [ripsecrets](https://github.com/sirwart/ripsecrets): find secrets in your code
 - [HTTPie](https://httpie.io/cli): nice way of interacting with HTTP APIs than `curl`
   - [xh](https://github.com/ducaale/xh): aims to be a faster HTTPie
+- [jless](https://jless.io)
 
 
 ---
