@@ -80,14 +80,14 @@ I plan to learn the following:
 
 ### I2C
 
-My hardware: 0.91-in OLED SSD1603 128x32 I2C
+My hardware: 0.91-in OLED SSD1603 128x32 I2C White
 
 - SCK (SCL): GP1
 - SDA: GP0
 
 ### SPI
 
-My hardware: 0.96-in OLED SSD1306 128x64 SPI
+My hardware: 0.96-in OLED SSD1306 128x64 SPI Yellow-Blue
 
 SPI has very different layout than I2C, so check which interface is your OLED display using first!
 
@@ -118,7 +118,7 @@ spi = busio.SPI(clock=SCK, MOSI=SDA)
 display_bus = displayio.FourWire(spi, command=DC, chip_select=CS, reset=RST, baudrate=1000000)
 display = adafruit_displayio_ssd1306.SSD1306(display_bus, width=WIDTH, height=HEIGHT)
 ```
-
+Note: Even though the OLED is "yellow-blue", the colors are actually fixed.  Some specs I've seen mentions 16 pixels height for the yellow part, but that doesn't match my testing. My display has 12 pixels of yellow at the top, with a small gap and then the rest is blue. Depending on your use case this may be desirable or not.
 
 ### Multiplexer
 
