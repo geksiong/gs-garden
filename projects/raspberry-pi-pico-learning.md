@@ -124,6 +124,12 @@ Note: Even though the OLED is "yellow-blue", the colors are actually fixed.  Som
 
 Connection is straightforward - the joystick has 2 analog outputs for X and Y axes, and 1 digital output for the button.
 
+#### Some notes
+
+- Analog input readings are 16-bit: 0 - 65535
+- The readings in centre position do vary over time, so need to implement a dead zone to avoid jitter
+- Connect the power to 3V3 only, otherwise you may destroy the analog inputs
+
 **TODO**:
 - Dead zone and calibration
 - https://forum.banana-pi.org/t/bpi-picow-s3-use-a-dual-axis-joystick-circuitpython/14260
