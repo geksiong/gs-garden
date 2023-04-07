@@ -120,6 +120,14 @@ display = adafruit_displayio_ssd1306.SSD1306(display_bus, width=WIDTH, height=HE
 ```
 Note: Even though the OLED is "yellow-blue", the colors are actually fixed.  Some specs I've seen mentions 16 pixels height for the yellow part, but that doesn't match my testing. My display has 12 pixels of yellow at the top, with a small gap and then the rest is blue. Depending on your use case this may be desirable or not.
 
+### Joystick
+
+Connection is straightforward - the joystick has 2 analog outputs for X and Y axes, and 1 digital output for the button.
+
+**TODO**:
+- Dead zone and calibration
+- https://forum.banana-pi.org/t/bpi-picow-s3-use-a-dual-axis-joystick-circuitpython/14260
+
 ### Multiplexer
 
 
