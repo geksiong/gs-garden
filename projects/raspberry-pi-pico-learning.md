@@ -2,6 +2,7 @@
 title: Learning Raspberry Pi Pico
 description: My journey with the Raspberry Pi Pico
 date: 2023-02-05
+updated: 2023-04-07
 ---
 ## CircuitPython
 
@@ -79,8 +80,44 @@ I plan to learn the following:
 
 ### I2C
 
+My hardware: 0.91-in OLED SSD1603 128x32 I2C
+
+- SCK (SCL): GP1
+- SDA: GP0
 
 ### SPI
+
+My hardware: 0.96-in OLED SSD1306 128x64 SPI
+
+SPI has very different layout than I2C, so check which interface is your OLED display using first!
+
+- SCK: GP2
+- SDA (MOSI): GP3
+- RST: GP4 
+- DC: GP0
+- CS: GP1
+
+```python
+import board
+import displayio
+import busio
+import adafruit_displayio_ssd1306
+
+SCK = board.GP2
+SDA = board.GP3
+RST = board.GP4
+DC = board.GP0
+CS = board.GP1
+
+WIDTH = 128
+HEIGHT = 64
+
+displayio.release_displays()
+
+spi = busio.SPI(clock=SCK, MOSI=SDA)
+display_bus = displayio.FourWire(spi, command=DC, chip_select=CS, reset=RST, baudrate=1000000)
+display = adafruit_displayio_ssd1306.SSD1306(display_bus, width=WIDTH, height=HEIGHT)
+```
 
 
 ### Multiplexer
