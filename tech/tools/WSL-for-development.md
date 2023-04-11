@@ -144,7 +144,7 @@ WSL now supports systemd, so you can run the Docker service without hacks, howev
 systemd=true
 ```
 - run `wsl --shutdown` to restart the WSL instance
-- inside Ubuntu, run `systemctl list-unit-files --type=service` and see if docker is there. It should run automatically on boot.
+- inside Ubuntu, run `systemctl list-unit --type=service` and see if docker is there. It should run automatically on boot.
 - run `docker ps` etc to confirm the daemon is indeed running and working fine.
 
 ### Updating WSL2 kernel
