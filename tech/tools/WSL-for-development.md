@@ -84,21 +84,27 @@ Is this a problem? Let's see...
 - Android projects could be a problem, especially React Native or Ionic projects, where the tooling resides in WSL2, but you need Android Studio to be able to access files in WSL2. **Pending research**
 - Building of Docker images may have to compromise (assuming you are running Docker inside WSL2, see below), as they are usually located with the main project, be it outside or inside WSL2. This affects Java projects the most, since they are hosted outside WSL2 (as concluded above). Since this is usually a secondary activity, I think the tradeoff is probably justified. Or you can always run Docker Desktop...
 
-### Running Docker inside WSL2
+### ~~Running Docker inside WSL2~~
 
-You can't run Docker out-of-the-box in Ubuntu for WSL2, as WSL2 _does not use systemd_. However, I did find that you can run dockerd and it seems to work.
+(Update: It just works now!)
 
-Fortunately, there is a very detailed guide on how to setup Docker nicely under WSL2:
+~~You can't run Docker out-of-the-box in Ubuntu for WSL2, as WSL2 _does not use systemd_. However, I did find that you can run dockerd and it seems to work.~~
+
+~~Fortunately, there is a very detailed guide on how to setup Docker nicely under WSL2:~~
 
 - <https://dev.to/bowmanjd/you-probably-don-t-need-systemd-on-wsl-windows-subsystem-for-linux-49gn>
 - <https://dev.to/bowmanjd/install-docker-on-windows-wsl-without-docker-desktop-34m9>
 - <https://dev.to/bowmanjd/using-podman-on-windows-subsystem-for-linux-wsl-58ji>
 
-### Snap packages
+### ~~Snap packages~~
 
-Ever since Ubuntu introduce Snaps, I find it irritating that some software chose to use snaps for distributions instead of good old apt repositories. Kotlin is one such software...
+(Update: probably a none issue now as everyone is moving away from snaps)
 
-Ubuntu under WSL2 does not run snapd, because (you guessed it) systemd. Thanks Ubuntu!
+~~Ever since Ubuntu introduce Snaps, I find it irritating that some software chose to use snaps for distributions instead of good old apt repositories. Kotlin is one such software...~~
+
+~~Ubuntu under WSL2 does not run snapd, because (you guessed it) systemd. Thanks Ubuntu!~~
+
+
 
 ## Upgrading Ubuntu
 
@@ -124,6 +130,22 @@ I happened to attempt the upgrade after EOL in July, so I wasn't able to do the 
 - Then do the usual `sudo apt update` and `sudo do-release-upgrade`
 
 _Note that the WSL2 kernel is still on 5.10, while Jammy is on 5.15 already, but as mentioned it probably doesn't matter._
+
+### (Update 2023-04-11) Systemd support
+
+WSL now supports systemd, so you can run the Docker service without hacks, however you need to get the Microsoft Store version.
+
+- install Microsoft Store version of WSL
+- After installation, confirm by running `wsl --version` (this command will fail on the Windows built-in version)
+- To get systemd in your distro, need to add this config in `/etc/wsl.conf`:
+
+```ini
+[boot]
+systemd=true
+```
+- run `wsl --shutdown` to restart the WSL instance
+- inside Ubuntu, run `systemctl list-unit-files --type=service` and see if docker is there. It should run automatically on boot.
+- run `docker ps` etc to confirm the daemon is indeed running and working fine.
 
 ### Updating WSL2 kernel
 
