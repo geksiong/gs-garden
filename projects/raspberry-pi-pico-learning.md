@@ -130,9 +130,21 @@ Connection is straightforward - the joystick has 2 analog outputs for X and Y ax
 - The readings in centre position do vary over time, so need to implement a dead zone to avoid jitter
 - Connect the power to 3V3 only, otherwise you may destroy the analog inputs
 
+
 **TODO**:
 - Dead zone and calibration
 - https://forum.banana-pi.org/t/bpi-picow-s3-use-a-dual-axis-joystick-circuitpython/14260
+
+
+### Analog Microphone
+
+Adafruit sells an I2S microphone, as well as a 'normal' analog microphone, but for some reason CircuitPython currently only supports an I2S MEMS PDM microphone.
+
+Since there is no support currently for an I2S mic, I tried using an analog mic based on the MAX4466. It's supposed to be worse than the I2S one.
+
+Th mic comes with an adjustable gain pot. I was able to get some samples from the mic via the `analogbufio` library, and the output does look like it varying with the frequencies. However, the output appears to be quite noisy no matter how I adjust the gain.
+
+There's a catch with the CircuityPython API to note. Most pins you just grab and don't need to release, but with the `BufferedIn` API I found out I can't simply reuse it - I have to `deinit` the pin once I capture my samples, and call `BufferedIn` again the next time to setup the pin for recording.
 
 ### Multiplexer
 
