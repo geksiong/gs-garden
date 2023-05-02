@@ -151,6 +151,12 @@ There's a catch with the CircuityPython API to note. Most pins you just grab and
 
 ### IO Expander
 
+#### PCF8575 I2C
+
+All seemed to work well initially, then the next time I plug in the power the Pico was unable to find its address 0x20. At first I thought there was some issue with the soldering or perhaps some conflict with the SPI display. Then I read someone mentioning that one of the A0, A1, A2 pads need to be bridged otherwise they will be floating and subject to interference. Sure enough when I scan the addresses it had move to 0x21.
+
+I took a closer look at my board and the design is different from the version from Adafruit, there are GND and VCC pads beside each of the A0, A1, A2 pads, so it seems unlike the Adafruit one I need to explicitly solder to choose which address I want. That includes the default 0x20 (all to GND).
+
 
 ### Shift Register
 
