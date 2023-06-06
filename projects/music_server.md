@@ -2,7 +2,7 @@
 title: Raspberry Pi Music Server
 description: Project notes on building a music server with a Raspberry Pi
 date: 2022-12-31
-updated: 2023-02-12
+updated: 2023-06-06
 ---
 
 ## Concept
@@ -227,6 +227,12 @@ Jivelite actually comes with a brightness control but it works only for the offi
 There are apparently screens that has backlight control, but the GPIO may conflict with the DAC.
 
 > **Lesson**: Get a HDMI LCD display. You'll get less fuss, more functionality, no potential for conflicts, and more GPIOs for knobs and buttons.
+
+**Update 2023-06-06:** Found a possible way, not to turn off the LCD backlight, but to turn off the LCD completely.
+
+- Physical pins 2 and 4 are the 5V power pins. By experimenting with physical connections, I found that only one of them is needed for the LCD to function, and I can disconnect/reconnect the power with no impact to the display. So if I place a transistor switch at pin 2, powered by one of the unused GPIO pins, I should be able turn on/off the LCD at will.
+- I could disconnect both 3V3 pins (1 and 17) as well without impact to the operation.
+- Of course, dimming is not an option with approach, but I just want to turn off the backlight to save power (and hopefully extend the LCD's life)
 
 ## Buttons and Rotary Encoders
 
