@@ -25,7 +25,7 @@ The first order of the day is to learn my remote control codes, otherwise I'll h
 
 Writing the YAML files was easy, and everything built and uploaded fine. But I couldn't see any logs output from the remote receiver (other logs were fine). After some googling I suddenly remember that the ESP8266 has some limitations when it comes to which pins are usable for what. After refreshing my memory, I connected the data pin to D7 and I finally got logs.
 
-I then saw that the readings were inconsistent, so back to Google again. Turns out a common "fix" is to invert the pin reading and specify that the pin is in PIN_PULLUP mode.
+I then saw that the readings were inconsistent, so back to Google again. Turns out a common "fix" is to invert the pin reading and specify that the pin is in INPUT_PULLUP mode.
 
 ### Codes
 
