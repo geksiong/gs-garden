@@ -234,6 +234,27 @@ There are apparently screens that has backlight control, but the GPIO may confli
 - I could disconnect both 3V3 pins (1 and 17) as well without impact to the operation.
 - Of course, dimming is not an option with approach, but I just want to turn off the backlight to save power (and hopefully extend the LCD's life)
 
+**Update 2023-06-11**: Using a cheap inline USB power meter, I tested the power consumption of the Pi under different conditions:
+
+- Everything powered up and playing music: power draw is about 450-500mA
+- Not playing music, LCD on: not much difference observed
+- Playing music, LCD off: 330-350mA
+- Mot playing music, LCD off: 320-330mA
+- Halted, LCD on: 240mA
+- Halted, LCD off: 110-130mA
+
+From the above observations, the DAC doesn't add much to the power consumption, but the LCD takes about 110mA, double the power during halt, so that's significant. Anyway, there's no point having an eternally turned on LCD when I'm not always the the device, and when I am using it I won't often look at the screen.
+
+*See section below regarding restarting the Pi after system halt*
+
+### Switching the LCD on/off
+
+I thought it would be a simple matter of using a transistor but it turns out to be not so simple. I only have 2N2222 NPN transistors on hand, but they don't work for this use case as they cannot be used for 'high-side' switching i.e. switching at the 5V side with the load 'below'. NPN transistors are designed for 'low-side' switching, where the load is 'above' the transistor emitter goes to GND.
+
+I found a suggestion to use the NPN transistor, controlled by a GPIO pin and output to switch on a PNP transistor at the 'high side', which then switches on the LCD. Googling further on this topic, I found out that this is a kind of 'Darlington transistor' circuit, specifically a 'Sziklai Transistor Pair', so seems legit.
+
+Alternatively, I can use MOSFET, but I must get the right type also. Other possibilities are to use a relay or reed switch. Since I have the NPN transistors already and also the resistors, I decided to try the PNP transistor approach.
+
 ## Buttons and Rotary Encoders
 
 I decided to add some physical controls to the setup. Someone has already written a guide here: https://docs.picoreplayer.org/projects/control-jivelite-by-rotary-encoders-and-buttons/. However, the guide has a very critical error which caused me to spend hours to troubleshoot. Turns out the sbpd command should be run in daemon mode with the `-d` parameter and that's missing from the guide. Also, those comments in the sbpd command shouldn't be in the actual script.
@@ -330,6 +351,16 @@ $CMD > /dev/null 2>&1 &
 
 - The encoder doesn't always register. This is actually documented at sbpd's GitHub repo.
 
+## Powering on after shutdown
+
+(update: 2023-06-11)
+
+- The Raspberry Pi doesn't actually power off, it merely halts but power is still on (I heard that RPi 4 is different now but I don't have one).
+- To restart the Pi after a system halt, a common suggestion is to briefly connect GPIO 3 (pin 5) to GND.
+- According to HiFiBerry documentation, this pin is used for the I2C and they recommend against it. However, I'm using a supposedly clone.
+- So I tried it out and found that it doesn't affect the operation of my setup. Grounding the pin when the Pi is active doesn't seem to affect anything. Ground it briefly when the Pi is halted will indeed restart the Pi. There does seem to a delay before it reacts but all seems to be working fine.
+
+
 ## LMS Plugins
 
 Note: I'm not sure how many plugins I can safely install. I had some wonky behaviour once and had to re-install LMS and re-setup from scratch (the LMS not the entire pCP). I decided to remove all plugins that I definitely don't need just in case.
@@ -368,3 +399,4 @@ The following plugins I haven't used yet but look interesting:
 - SqueezeboxEQ - equaliser
 - SqueezeCloud - integration with SoundCloud
 - SqueezeESP32 - hardware based on ESP32
+
