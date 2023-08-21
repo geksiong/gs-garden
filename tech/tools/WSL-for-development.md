@@ -147,6 +147,28 @@ systemd=true
 - inside Ubuntu, run `systemctl list-unit --type=service` and see if docker is there. It should run automatically on boot.
 - run `docker ps` etc to confirm the daemon is indeed running and working fine.
 
+### (Update 2023-08-21) VSCode Exec format error
+
+I've been getting `Code.exe: Exec format error` for some time when retrying to launch vscode from the terminal.
+
+According to [this GitHub issue](https://github.com/microsoft/WSL/issues/8952#issuecomment-1568212651) the issue is due to Ubuntu 23.04 for WSL systemd somehow losing the `WSLInterop.conf` file, and the fix is to restore that file:
+
+```sh
+sudo sh -c 'echo :WSLInterop:M::MZ::/init:PF > /usr/lib/binfmt.d/WSLInterop.conf'
+sudo systemctl restart systemd-binfmt
+```
+
+Some users reported they had to unmask and remask `systemd-binfmt.service` (I didn't have to do this):
+
+```sh
+sudo sh -c 'echo :WSLInterop:M::MZ::/init:PF > /usr/lib/binfmt.d/WSLInterop.conf'
+sudo systemctl unmask systemd-binfmt.service
+sudo systemctl restart systemd-binfmt
+sudo systemctl mask systemd-binfmt.service
+```
+
+
+
 ### Updating WSL2 kernel
 
 Just run `wsl --update` inside a PowerShell terminal.
