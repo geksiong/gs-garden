@@ -30,7 +30,7 @@ MacOS does not have an equivalent to WSL.
 
 I've been trying out Rancher Desktop. Unlike Podman which is a replacement for Docker core, Rancher apparently runs Docker inside a VM. An additional benefit is that it also does Kubernetes.
 
-### Rancher issue: File permissions with bind mounts
+### Rancher issue: File permissions with bind mounts (NOT RESOLVED!)
 
 I prefer to use designated bind mounts for the data volumes, and here I ran into a problem with file permissions. In Linux (and WSL), the bind mounts must have the same UID:GID as the process running the container. This might require some juggling of the users on the host, but it is easily understood and it works.
 
@@ -49,6 +49,10 @@ mounts:
 
 The caveat is that any symlinks on your host system will be seen as the referenced object in the VM/container.
 
-I'll have to try out with other containers to be sure this workaround works. Let's hope they'll fix the problem for good in a future release.
+Alas for me, MySQL does use symlinks. The file permission errors are mostly resolved except for the symlink used by MySQL for the socket file...
+
+Interestingly, the file permission on the host must be owned by me, not the container's user. I suppose this is to maintain the same behaviour as Docker Desktop for Mac?
+
+Let's hope they'll fix the problem for good in a future release.
 
 
