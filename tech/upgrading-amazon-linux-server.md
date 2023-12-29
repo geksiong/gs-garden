@@ -35,7 +35,12 @@ Assuming everything has been running fine with Docker compose, we can schedule a
   - set timezone: `sudo timedatectl set-timezone <your_time_zone>`
   - update hostname in `/etc/hostname`
   - install Docker: `sudo yum install docker`
-  - Docker compose must be installed manually: `sudo curl -SL https://github.com/docker/compose/releases/download/v2.23.3/docker-compose-linux-x86_64 -o /usr/local/lib/docker/cli-plugins/docker-compose` (create the destination directory first)
+  - Docker compose must be installed manually:
+    - ```
+      sudo mkdir -p /usr/local/lib/docker/cli-plugins
+      sudo curl -SL https://github.com/docker/compose/releases/download/v2.23.3/docker-compose-linux-x86_64 -o /usr/local/lib/docker/cli-plugins/docker-compose
+      sudo chmod +x /usr/local/lib/docker/cli-plugins/docker-compose
+      ```
   - if need crontab: `sudo yum install cronie cronie-anacron`
   - if need CloudWatch: `sudo yum install amazon-cloudwatch-agent`
   - if need swap file create it
