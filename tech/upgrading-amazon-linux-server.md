@@ -38,7 +38,7 @@ Assuming everything has been running fine with Docker compose, we can schedule a
   - Docker compose must be installed manually:
     - ```
       sudo mkdir -p /usr/local/lib/docker/cli-plugins
-      sudo curl -SL https://github.com/docker/compose/releases/download/v2.23.3/docker-compose-linux-x86_64 -o /usr/local/lib/docker/cli-plugins/docker-compose
+      sudo curl -SL https://github.com/docker/compose/releases/latest/docker-compose-linux-x86_64 -o /usr/local/lib/docker/cli-plugins/docker-compose
       sudo chmod +x /usr/local/lib/docker/cli-plugins/docker-compose
       ```
   - if need crontab: `sudo yum install cronie cronie-anacron`
