@@ -1,3 +1,5 @@
+> 知之为知之，不知为不知，是知也
+
 # Welcome to My Digital Garden
 
 This is a space for cultivating my thoughts and ideas, using the concepts of **Digital Gardens**, the **Zettelkasten method**, and **Learning in Public**.
