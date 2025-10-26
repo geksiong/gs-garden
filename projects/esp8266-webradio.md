@@ -161,7 +161,7 @@ GPIO16 (D0) is not the best pin to place a button on, but I read that it can be 
 
 ### Chinese characters on SSD1306 OLED display
 
-This is an interesting sidetrack. Since the radio station I want to listen to is in Chinese, it would be nice to be able to display Chinese characters on the OED display. Due to the size of the Chinese character set and complexity of the font, it is not easy to squeeze everything into the confines of the ESP8266.
+This is an interesting sidetrack. Since the radio station I want to listen to is in Chinese, it would be nice to be able to display Chinese characters on the OLED display. Due to the size of the Chinese character set and complexity of the font, it is not easy to squeeze everything into the confines of the ESP8266.
 
 I finally found a working solution, using the U8g2 lib, but it splits the Chinese characters into 3 which doesn't seem sufficient for my needs. Then I found a lib called 'Arduino_GFX_Library' where the author created another Chinese U8g2 font based on the most common characters. I tried this combo and it seems to perform quite well.
 
